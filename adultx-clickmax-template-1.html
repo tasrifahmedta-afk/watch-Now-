@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Adultx Clickmax</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="18+ Premium Entertainment">
+<meta property="og:title" content="Adultx Clickmax">
+<meta property="og:description" content="Adults only. Enter now.">
+<meta property="og:image" content="https://via.placeholder.com/1200x630">
+
+<style>
+:root{
+--bg:#1A0D2B;
+--secondary:#FF3366;
+--accent:#FFD700;
+--text:#fff;
+--muted:#ccc;
+}
+body{margin:0;font-family:Arial;background:var(--bg);color:var(--text)}
+.hidden{display:none}
+.btn{background:var(--secondary);color:#fff;padding:14px 30px;
+border-radius:30px;font-weight:bold;display:inline-block}
+.btn:hover{background:var(--accent);color:#000}
+
+/* AGE GATE */
+#layer1{
+position:fixed;inset:0;z-index:9;
+background:linear-gradient(rgba(26,13,43,.9),rgba(26,13,43,.9)),
+url("https://via.placeholder.com/1200x800") center/cover;
+display:flex;align-items:center;justify-content:center;
+}
+.age-box{background:rgba(0,0,0,.6);padding:30px;border-radius:16px;text-align:center}
+.age-box h1{color:var(--secondary)}
+.age-anim{color:var(--accent);animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* LAYER 2 */
+#layer2{text-align:center;padding:40px;display:none}
+.teasers{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:14px;max-width:900px;margin:auto}
+.teasers img{width:100%;border-radius:14px}
+
+/* MAIN */
+header{background:#12081f;padding:16px;text-align:center}
+.section{padding:30px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.card{background:#12081f;border-radius:14px;padding:10px;text-align:center}
+.ad{border:1px dashed var(--accent);padding:20px;margin:20px 0;color:var(--muted)}
+footer{text-align:center;font-size:12px;color:var(--muted);padding:20px}
+</style>
+</head>
+
+<body>
+
+<!-- LAYER 1 -->
+<div id="layer1">
+  <div class="age-box">
+    <h1>18+ Warning</h1>
+    <div class="age-anim">Adult Content • Verification Required</div><br>
+    <a class="btn" onclick="enterSite()">I am 18+</a>
+  </div>
+</div>
+
+<!-- LAYER 2 -->
+<div id="layer2">
+  <h2 style="color:#FF3366">Top Picks For You</h2>
+  <div class="teasers">
+    <img src="https://via.placeholder.com/300x200">
+    <img src="https://via.placeholder.com/300x200">
+    <img src="https://via.placeholder.com/300x200">
+    <img src="https://via.placeholder.com/300x200">
+  </div>
+
+  <div class="ad">Native Ad Here</div>
+  <a class="btn" onclick="redirectOut()">Watch Now</a>
+</div>
+
+<!-- MAIN -->
+<div id="layer3" class="hidden">
+<header><h1 style="color:#FF3366">Adultx Clickmax</h1></header>
+<div class="section">
+<div class="ad">Banner Ad</div>
+<div class="grid">
+  <div class="card">Premium Content</div>
+  <div class="card">Premium Content</div>
+  <div class="card">Premium Content</div>
+</div>
+</div>
+<footer>18+ Only • Disclaimer • Privacy</footer>
+</div>
+
+<script>
+function setC(n,v,h){
+ let d=new Date();d.setTime(d.getTime()+h*36e5);
+ document.cookie=n+"="+v+";expires="+d.toUTCString()+";path=/";
+}
+function getC(n){
+ let m=document.cookie.match(new RegExp('(^| )'+n+'=([^;]+)'));
+ return m?m[2]:null;
+}
+function enterSite(){
+ setC("adultx18","yes",24);
+ layer1.style.display="none";
+ layer2.style.display="block";
+}
+function redirectOut(){
+ // 👉 এখানে Adsterra / CPA / Dating URL বসাও
+ // window.open("https://YOUR-OFFER-LINK","_blank");
+ layer2.style.display="none";
+ layer3.classList.remove("hidden");
+}
+if(getC("adultx18")==="yes"){
+ layer1.style.display="none";
+ layer2.style.display="block";
+}
+</script>
+
+</body>
+</html>
